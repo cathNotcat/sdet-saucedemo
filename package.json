@@ -3,7 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:login": "npx playwright test --grep @login",
+    "test:inventory-filter": "npx playwright test --grep @inventory-filter",
+    "test:filter": "npx playwright test --grep @filter",
+    "test:positive": "npx playwright test --grep @positive",
+    "test:negative": "npx playwright test --grep @negative",
+    "test:headed": "npx playwright test --headed",
+    "test:debug": "npx playwright test --debug"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
