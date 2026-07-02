@@ -2,8 +2,9 @@ import { BasePage } from "./base.page";
 
 export class InventoryPage extends BasePage {
     // Locators
-    private filterDropdown = this.page.getByTestId('product_sort_container');
-    private shoppingCartBadge = this.page.getByTestId('shopping_cart_badge');
+    get filterDropdown() {
+        return this.page.getByTestId('product_sort_container');
+    }
     
     // Dynamic locators
     async sortProducts(sortValue: string) {
@@ -19,24 +20,14 @@ export class InventoryPage extends BasePage {
 
     // Methods
     async getProductNames(): Promise<string[]> {
-        return await this.page
-            .getByTestId('inventory-item-name')
-            .allTextContents();
+        return await this.page.getByTestId('inventory-item-name').allTextContents();
     }
 
     async getProductPrices(): Promise<number[]> {
-        const prices = await this.page
-            .getByTestId('inventory-item-price')
-            .allTextContents();
+        const prices = await this.page.getByTestId('inventory-item-price').allTextContents();
 
         return prices.map(price =>
             Number(price.replace('$', ''))
         );
     }
-
-
-    
-    // public async getShoppingCartCount(): Promise<string> {
-    //     return await this.shoppingCartBadg.textContent();
-    // }
 }
