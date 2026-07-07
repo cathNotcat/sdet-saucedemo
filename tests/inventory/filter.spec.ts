@@ -1,14 +1,18 @@
 import { test, expect } from '../../src/fixtures/test.fixtures';
 import { users } from '../../test-data/users';
 import { sortOptions } from '../../test-data/sort-options';
+import { inventoryMetadata } from '../../src/utils/allure';
+import * as allure from 'allure-js-commons';
 
-test.describe('Inventory - Filter', ()  => {
+test.describe('Inventory', ()  => {
     test.beforeEach(async ({ loginPage }) => {
         await loginPage.open();
         await loginPage.login(
             users.validCredentials.username, 
             users.validCredentials.password
         );
+        await inventoryMetadata();
+        await allure.story("Filter Products");
     });
 
     test('should filter products by ascending name',
