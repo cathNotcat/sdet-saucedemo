@@ -26,7 +26,6 @@ jobs:
 
       - name: Run Playwright tests
         run: npx playwright test
-        continue-on-error: true
 
       - name: Generate Allure report
         if: always()
@@ -39,3 +38,4 @@ jobs:
           name: allure-report
           path: allure-report/
           retention-days: 14
+          if-no-files-found: warn
